@@ -78,3 +78,25 @@ if __name__ == '__main__':
 </html>
 
 Flask==2.3.2
+
+# Use an official Python runtime as a parent image
+FROM python:3.10-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the requirements file and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose the port Flask runs on
+EXPOSE 5000
+
+# Define environment variable to tell Flask app where to run
+ENV FLASK_APP=app.py
+
+# Run the Flask app
+CMD ["flask", "run", "--host=0.0.0.0"]
