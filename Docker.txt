@@ -1,0 +1,38 @@
+1. Update System Packages
+2. Install Required Packages
+3. Add Docker Repository
+4. Install Docker Engine and Tools
+5. Verify Docker Installation
+6. Create a New Directory for Your Container
+7. Execute the Container
+
+sudo apt update
+sudo apt install docker.io
+nano app.py
+mkdir templates
+nano templates/index.html
+nano Dockerfile
+docker build -t flask-calculator
+docker run -p 5000:5000 flask-calculator
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Update System Packages
+2. Install Required Packages
+3. Add Docker Repository
+4. Install Docker Engine and Tools
+5. Verify Docker Installation
+6. Pull an Image from Docker Hub.
+7. Run Nginx Web Server. 
+
+sudo apt update
+sudo systemctl start docker 
+sudo systemctl enable docker 
+docker --version 
+docker pull ngnix
+docker run -d -p 8080:80 --name mynginx nginx
+
+
+
+
+

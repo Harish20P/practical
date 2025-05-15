@@ -1,0 +1,87 @@
+1  Download Ubuntu ISO from the official Ubuntu website.
+2  Open VirtualBox and click New.
+3  Name your virtual machine, choose a location, and select the OS type as Ubuntu.
+4  Assign RAM (at least 2048 MB recommended).
+5  Create a virtual hard disk: choose VDI format and Dynamically Allocated storage.
+6  Set disk size (20 GB or more recommended) and confirm.
+7  Start the virtual machine and when prompted, select the downloaded Ubuntu ISO file.
+8  Choose Install Ubuntu.
+9  Select keyboard layout and click Continue.
+10 Choose installation type (Normal is recommended) and click Install Now.
+11 Confirm disk changes (this affects only the virtual disk).
+12 Select your time zone, set your username and password.
+13 Wait for installation to complete and reboot the VM.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1  Install GCC Compiler (if not installed) using the terminal.
+2  Create a C program file using the touch command.
+3  Open File Explorer and locate the created file.
+4  Open the file in a text editor and write the C program.
+5  Save the file and close the editor.
+6  Open the terminal and navigate to the file location.
+7  Compile the program using the gcc command.
+8  Run the compiled program using the ./ command.
+9  Enter input values when prompted.
+10 View the output displayed in the terminal.
+
+$ sudo apt update
+$ sudo apt install build-essential
+gcc --version
+touch hello.c
+
+#include <stdio.h>
+int main() { 
+float numl, num2, sum; 
+printf("Enter the first number: "); 
+scanf("%f", &numl); 
+printf("Enter the second number: "); 
+scanf("%f", &num2);
+sum = numl + num2; 
+printf("The sum of %.2f and %.2f is %.2f\n", numl, num2, sum); 
+return 0; 
+) 
+
+gcc hello.c -o hello.c
+./hello
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1  Open Google Cloud platform on your web browser.
+2  Login to your account.
+3  Navigate to the dashboard.
+4  Choose console in the top corner
+5  Search for Google App Engine Admin API and enable it.
+6  Select cloud shell in the top right corner
+7  Search for GoogleCloudPlatform/python-docs-samples
+8  Download the hello_world web application from github using the git clone command.
+10 Download the hello_world web application from github using the
+11 Change the directory using cd command
+
+https://github.com/GoogleCloudPlatform/python-docs-samples.git
+git clone https://github.com/GoogleCloudPlatform/python-docs samples
+cd python-docs-samples/appengine/standard_python3/hello_world
+python main.py
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Search for Google Cloud platform download
+Click on the link
+Download the Google Cloud CLI installer and Install
+Type “gcloud cloud-shell ssh”
+Search for "GoogleCloudPlatform/python-docs-samples" in GitHub.
+Change the directory to the hello_world application:
+Run the application, enter “python main.py” in the shell.
+Program for Notes Application
+Search for GitHub url in GitHub.
+Clone the application by “git clone giturl”
+Create a virtual environment and Install the required libraries.
+Program for Notes app
+Example Python Code
+Run the Application using “python app.py”
+Open the application in your browser using the link
+
+gcloud init
+gcloud cloud-shell ssh
+cd python-docs-samples/appengine/standard_python3/hello_world
+
