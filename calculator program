@@ -1,0 +1,80 @@
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/calculate', methods=['POST'])
+def calculate():
+    try:
+        num1 = float(request.form['num1'])
+        num2 = float(request.form['num2'])
+        operation = request.form['operation']
+
+        if operation == 'add':
+            result = num1 + num2
+        elif operation == 'subtract':
+            result = num1 - num2
+        elif operation == 'multiply':
+            result = num1 * num2
+        elif operation == 'divide':
+            if num2 == 0:
+                return render_template('index.html', error="Cannot divide by zero.")
+            result = num1 / num2
+        elif operation == 'modulus':
+            if num2 == 0:
+                return render_template('index.html', error="Cannot modulo by zero.")
+            result = num1 % num2
+        else:
+            return render_template('index.html', error="Invalid operation.")
+
+        return render_template('index.html', result=result, num1=num1, num2=num2, operation=operation)
+    except ValueError:
+        return render_template('index.html', error="Invalid input. Please enter numbers.")
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Calculator</title>
+</head>
+<body>
+  <h1>Simple Calculator</h1>
+
+  {% if error %}
+    <p style="color: red;">Error: {{ error }}</p>
+  {% endif %}
+
+  {% if result is not none %}
+    <p>Result of {{ num1 }} {{ 
+        '+' if operation=='add' else 
+        '-' if operation=='subtract' else 
+        '*' if operation=='multiply' else 
+        '/' if operation=='divide' else 
+        '%' if operation=='modulus' else '' 
+         }} {{ num2 }} = {{ result }}</p>
+  {% endif %}
+
+  <form action="/calculate" method="POST">
+    <input type="text" name="num1" placeholder="Number 1" value="{{ num1 or '' }}" required>
+    <input type="text" name="num2" placeholder="Number 2" value="{{ num2 or '' }}" required>
+
+    <select name="operation" required>
+      <option value="add" {% if operation=='add' %}selected{% endif %}>Add (+)</option>
+      <option value="subtract" {% if operation=='subtract' %}selected{% endif %}>Subtract (-)</option>
+      <option value="multiply" {% if operation=='multiply' %}selected{% endif %}>Multiply (*)</option>
+      <option value="divide" {% if operation=='divide' %}selected{% endif %}>Divide (/)</option>
+      <option value="modulus" {% if operation=='modulus' %}selected{% endif %}>Modulus (%)</option>
+    </select>
+
+    <button type="submit">Calculate</button>
+  </form>
+</body>
+</html>
+
+Flask==2.3.2
